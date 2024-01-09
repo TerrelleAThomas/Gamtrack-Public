@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gaming Interest Pairing Form</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Additional styles for spacing and centering */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .center-content {
+      text-align: center;
+    }
+    label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="center-content">Gaming Interest Pairing Form</h2>
+    <form>
+      <!-- Age -->
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" class="form-control" id="age" required>
+      </div>
+      <!-- Gaming Preferences - Favorite Game Genres -->
+      <div class="form-group">
+        <label for="favoriteGenres">Favorite Game Genres:</label>
+        <select class="form-control" id="favoriteGenres" multiple>
+          <option>Action</option>
+          <option>Adventure</option>
+          <option>RPG</option>
+          <option>Strategy</option>
+          <option>Sports</option>
+          <option>Simulation</option>
+          <!-- Add more genres as needed -->
+        </select>
+      </div>
+      <!-- Gaming Preferences - Favorite Games -->
+      <div class="form-group">
+        <label for="favoriteGames">Favorite Games:</label>
+        <input type="text" class="form-control" id="favoriteGames" placeholder="E.g. The Witcher 3, Fortnite">
+      </div>
+      <!-- Gaming Preferences - Multiplayer/Single-player -->
+      <div class="form-group">
+        <label for="multiplayer">Preference (Multiplayer/Single-player):</label>
+        <select class="form-control" id="multiplayer">
+          <option>Multiplayer</option>
+          <option>Single-player</option>
+        </select>
+      </div>
+      <!-- Time Availability for Gaming -->
+      <div class="form-group">
+        <label for="timeAvailability">Time Availability for Gaming:</label>
+        <select class="form-control" id="timeAvailability">
+          <option>Mornings</option>
+          <option>Afternoons</option>
+          <option>Evenings</option>
+          <option>Weekends</option>
+          <option>Flexible</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+      <!-- Preferred Gaming Style -->
+      <div class="form-group">
+        <label for="gamingStyle">Preferred Gaming Style:</label>
+        <select class="form-control" id="gamingStyle">
+          <option>Competitive</option>
+          <option>Casual</option>
+          <option>Cooperative</option>
+          <option>Explorative</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+      <!-- Communication and Interaction -->
+      <div class="form-group">
+        <label for="communicationChannels">Preferred Communication Channels:</label>
+        <input type="text" class="form-control" id="communicationChannels" placeholder="In-game chat, Voice chat">
+      </div>
+      <div class="form-group">
+        <label for="externalTools">Willingness to Use External Tools:</label>
+        <select class="form-control" id="externalTools">
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+      <!-- Matching Criteria -->
+      <div class="form-group">
+        <label for="matchingCriteria">Desired Matching Criteria:</label>
+        <textarea class="form-control" id="matchingCriteria" rows="3" placeholder="Similar skill level, Similar interests"></textarea>
+      </div>
+      <!-- Additional Information -->
+      <div class="form-group">
+        <label for="additionalComments">Additional Comments:</label>
+        <textarea class="form-control" id="additionalComments" rows="3"></textarea>
+      </div>
+      <!-- Consent and Terms -->
+      <div class="form-group form-check center-content">
+        <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+        <label class="form-check-label" for="agreeTerms">I agree to share this information for pairing purposes.</label>
+      </div>
+      <!-- Centered Submit Button -->
+      <div class="center-content">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

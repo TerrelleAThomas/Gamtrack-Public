@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Database Administrator Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Add custom styles here */
+        body {
+            padding-top: 50px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            background-color: #37474F;
+            color: #ffffff;
+            transition: all 0.3s;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            background-color: #263238;
+        }
+
+        .sidebar ul.components {
+            padding: 20px 0;
+        }
+
+        .sidebar ul p {
+            padding: 10px;
+            font-size: 1.1em;
+            display: block;
+        }
+
+        .sidebar ul li {
+            font-size: 0.9em;
+            list-style-type: none;
+            display: block;
+            padding: 10px;
+            transition: all 0.1s;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #455A64;
+        }
+
+        .sidebar ul li a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding-top: 50px;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>Admin Panel</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li>
+                <a href="#">Dashboard</a>
+            </li>
+            <li>
+                <a href="#">Users</a>
+            </li>
+            <li>
+                <a href="#">Games</a>
+            </li>
+            <li>
+                <a href="#">Logs</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content">
+        <div class="container">
+            <h2>Welcome, Database Administrator!</h2>
+            <p>Here are some tasks you can perform:</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Manage Users</h5>
+                            <p class="card-text">Add, edit, or remove user data from the database.</p>
+                            <a href="#" class="btn btn-primary">Go to Users</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Game Database</h5>
+                            <p class="card-text">Update game information and manage game-related data.</p>
+                            <a href="#" class="btn btn-primary">Go to Games</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <h3>Recent Activities</h3>
+                    <ul>
+                        <li>Updated user profiles</li>
+                        <li>Added new games to the database</li>
+                        <li>Reviewed user-reported issues</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <h3>Database Status</h3>
+                    <p>Database Size: XX GB</p>
+                    <p>Server Status: Online</p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <h3>Server Logs</h3>
+                    <p>Display recent server logs here...</p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <h3>Analytics</h3>
+                    <p>Display analytics data or graphs here...</p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <h3>User Feedback</h3>
+                    <p>Display user feedback or comments here...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

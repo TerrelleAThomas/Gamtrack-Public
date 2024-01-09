@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Database</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles */
+        body {
+            padding-top: 50px;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .table th, .table td {
+            border-top: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>User Database</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Display users table with creative layout -->
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Registration Date</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>JohnDoe</td>
+                                        <td>john@example.com</td>
+                                        <td>User</td>
+                                        <td>2023-01-15</td>
+                                        <td><span class="badge badge-success">Active</span></td>
+                                        <td>
+                                            <button class="btn btn-outline-info btn-sm">View</button>
+                                            <button class="btn btn-outline-danger btn-sm">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>JaneSmith</td>
+                                        <td>jane@example.com</td>
+                                        <td>Admin</td>
+                                        <td>2023-02-20</td>
+                                        <td><span class="badge badge-warning">Pending</span></td>
+                                        <td>
+                                            <button class="btn btn-outline-info btn-sm">View</button>
+                                            <button class="btn btn-outline-danger btn-sm">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <!-- ... Display more users -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

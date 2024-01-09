@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GamTrack Login</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('Rush.png'); /* Replace 'GamTrack_Milestone_Folder/Rush.png' with the path to your image */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+      color: #fff;
+    }
+    .container {
+      padding-top: 100px;
+    }
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .btn-outline-primary,
+    .btn-outline-danger {
+      color: #fff;
+      border-color: #fff;
+    }
+    .btn-outline-primary:hover,
+    .btn-outline-danger:hover {
+      background-color: #fff;
+      color: #000;
+    }
+    .quote {
+      color: #000;
+      font-weight: bold;
+      text-align: center;
+    }
+    h1 {
+      color: #000;
+    }
+    .login-header {
+      color: #000;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .space-after-login-form {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1 class="text-center mb-4">GamTracker</h1>
+      <p class="quote">“Boss… you were right. It’s not about changing the world. It’s about doing our best to leave the world… the way it is. It’s about respecting the will of others and believing in your own.”</p>
+      <form>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter your password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+      </form>
+      <div class="space-after-login-form"></div>
+      <h2 class="login-header">Or Log In With:</h2>
+      <div class="text-center mt-4">
+        <button class="btn btn-outline-primary mr-2" data-toggle="tab" href="#microsoft">LogIn with Microsoft</button>
+        <button class="btn btn-outline-danger" data-toggle="tab" href="#google">LogIn with Google</button>
+      </div>
+      <div class="tab-content mt-4" id="myTabContent">
+        <div class="tab-pane fade" id="microsoft">
+          <!-- Microsoft sign-in content -->
+          <form>
+            <div class="form-group">
+              <label for="microsoftEmail">Microsoft Email</label>
+              <input type="email" class="form-control" id="microsoftEmail" placeholder="Enter your Microsoft email">
+            </div>
+            <div class="form-group">
+              <label for="microsoftPassword">Password</label>
+              <input type="password" class="form-control" id="microsoftPassword" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">LogIn with Microsoft</button>
+          </form>
+        </div>
+        <div class="tab-pane fade" id="google">
+          <!-- Google sign-in content -->
+          <form>
+            <div class="form-group">
+              <label for="googleEmail">Google Email</label>
+              <input type="email" class="form-control" id="googleEmail" placeholder="Enter your Google email">
+            </div>
+            <div class="form-group">
+              <label for="googlePassword">Password</label>
+              <input type="password" class="form-control" id="googlePassword" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="btn btn-danger btn-block">LogIn with Google</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS and jQuery (optional, for Bootstrap functionality) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

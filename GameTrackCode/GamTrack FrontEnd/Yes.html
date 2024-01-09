@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<header class="bg-dark text-white text-center py-3">
+    <h1>Admin Dashboard</h1>
+</header>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <button class="btn btn-primary btn-block" onclick="showTab('userManagement')">User Management</button>
+            <button class="btn btn-primary btn-block" onclick="showTab('contentModeration')">Content Moderation</button>
+            <button class="btn btn-primary btn-block" onclick="showTab('featureDevelopment')">Feature Development</button>
+            <button class="btn btn-primary btn-block" onclick="showTab('analytics')">Analytics</button>
+            <button class="btn btn-primary btn-block" onclick="showTab('policyManagement')">Policy Management</button>
+            <button class="btn btn-primary btn-block" onclick="showTab('emergencyResponse')">Emergency Response</button>
+            <button class="btn btn-primary btn-block" onclick="showTab('settings')">Settings</button>
+            <button class="btn btn-primary btn-block" onclick="showTab('communication')">Communication</button>
+            <button class="btn btn-primary btn-block" onclick="showTab('legalCompliance')">Legal Compliance</button>
+            <button class="btn btn-primary btn-block" onclick="showTab('verification')">Verification</button>
+            <button class="btn btn-primary btn-block" onclick="showTab('feedback')">Feedback</button>
+        </div>
+
+        <div class="col-md-9">
+            <div id="userManagement" class="tab-content">
+                <h2>User Management Section</h2>
+                <!-- Add content for User Management -->
+            </div>
+
+            <div id="contentModeration" class="tab-content">
+                <h2>Content Moderation Section</h2>
+                <!-- Add content for Content Moderation -->
+            </div>
+
+            <div id="featureDevelopment" class="tab-content">
+                <h2>Feature Development Section</h2>
+                <!-- Add content for Feature Development -->
+            </div>
+
+            <div id="analytics" class="tab-content">
+                <h2>Analytics Section</h2>
+                <!-- Add content for Analytics -->
+            </div>
+
+            <div id="policyManagement" class="tab-content">
+                <h2>Policy Management Section</h2>
+                <!-- Add content for Policy Management -->
+            </div>
+
+            <div id="emergencyResponse" class="tab-content">
+                <h2>Emergency Response Section</h2>
+                <!-- Add content for Emergency Response -->
+            </div>
+
+            <div id="settings" class="tab-content">
+                <h2>Settings Section</h2>
+                <!-- Add content for Settings -->
+            </div>
+
+            <div id="communication" class="tab-content">
+                <h2>Communication Section</h2>
+                <!-- Add content for Communication -->
+            </div>
+
+            <div id="legalCompliance" class="tab-content">
+                <h2>Legal Compliance Section</h2>
+                <!-- Add content for Legal Compliance -->
+            </div>
+
+            <div id="verification" class="tab-content">
+                <h2>Verification Section</h2>
+                <!-- Add content for Verification -->
+            </div>
+
+            <div id="feedback" class="tab-content">
+                <h2>Feedback Section</h2>
+                <!-- Add content for Feedback -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    function showTab(tabId) {
+        // Hide all sections
+        document.querySelectorAll('.tab-content').forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Show the selected section
+        document.getElementById(tabId).style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
