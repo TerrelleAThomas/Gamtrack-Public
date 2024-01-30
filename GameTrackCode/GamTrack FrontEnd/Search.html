@@ -8,29 +8,56 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
     /* Additional styles for the search bar */
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      background-image: url('friends.jpg'); /* Replace with your image file path */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
     .search-container {
-      margin-top: 50px;
+      width: 80%;
+      max-width: 800px; /* Adjust the maximum width as needed */
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .search-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #800080; /* Purple color */
+    }
+
+    .custom-search-bar {
+      width: 100%; /* Adjust the width as needed */
+      max-width: 600px; /* Set a maximum width if desired */
+      margin-bottom: 20px;
+    }
+
+    .custom-search-btn {
+      background-color: #800080; /* Purple color */
+      border-color: #800080; /* Purple color */
+      color: #fff; /* White text */
+      height: 38px; /* Adjust the height as needed */
+      width: 120px; /* Adjust the width as needed */
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="search-container">
-          <h1 class="text-center mb-4">Search Bar Page</h1>
-          <form action="#" method="GET">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search..." name="search">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="submit">Search</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+  <div class="container search-container">
+    <h2 class="search-title">Search</h2>
+    <form class="d-flex" role="search">
+      <input class="form-control me-2 custom-search-bar" type="search" placeholder="Type your search here" aria-label="Search">
+      <button class="btn btn-outline-primary custom-search-btn" type="submit">Search</button>
+    </form>
   </div>
 
   <!-- Bootstrap JS and jQuery (optional, for some Bootstrap functionalities) -->

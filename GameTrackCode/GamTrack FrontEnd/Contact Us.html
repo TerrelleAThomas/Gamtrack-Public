@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Contact Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('help.jpg'); /* Replace with your image file path or URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            color: white; /* Updated text color to white */
+        }
+        .container {
+            margin-top: 50px;
+            font-weight: bold;
+            color: white; /* Updated text color to white */
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+            color: black; /* Set color to black */
+        }
+        label {
+            color: white; /* Updated label color to white */
+            font-size: 17px;
+        }
+        h4, h5 {
+            font-size: 1.20em;
+            color: white; /* Updated heading color to white */
+        }
+        p {
+            font-size: 1.20em;
+            color: white; /* Updated paragraph color to white */
+        }
+        .purple-btn {
+            background-color: purple;
+            border-color: purple;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="text-center">
+        <h1>Contact Us</h1>
+        <p></p>
+        <h4>Need Help?</h4>
+        <h4>Contact customer support through email or telephone!</h4>
+        <h5>Phone: 1-888-789-6642</h5>
+        <h5>Email: customersupport@techtribe.com</h5>
+    </div>
+
+    <br>
+
+    <form>
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control" id="fname" name="firstname" placeholder="Your name..">
+        </div>
+
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="lastname" placeholder="Your last name..">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="Number">
+        </div>
+
+        <div class="form-group">
+            <label for="subject1">Subject Topic</label>
+            <input type="text" class="form-control" id="subject1" name="phone" placeholder="Subject Topic">
+        </div>
+
+        <div class="form-group">
+            <label for="subject">Subject</label>
+            <textarea class="form-control" id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary purple-btn">Submit</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

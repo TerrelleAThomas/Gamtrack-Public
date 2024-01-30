@@ -5,14 +5,15 @@
   <title>GamTrack Login</title>
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      background-image: url('Rush.png'); /* Replace 'GamTrack_Milestone_Folder/Rush.png' with the path to your image */
+      background-image: url('Now.png');
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
       font-family: Arial, sans-serif;
-      color: #fff;
+      color: #fff; /* Set default text color to white */
     }
     .container {
       padding-top: 100px;
@@ -21,6 +22,7 @@
       background-color: rgba(255, 255, 255, 0.9);
       padding: 20px;
       border-radius: 5px;
+      color: #000; /* Set text color inside the container to black */
     }
     .btn-outline-primary,
     .btn-outline-danger {
@@ -32,20 +34,10 @@
       background-color: #fff;
       color: #000;
     }
-    .quote {
-      color: #000;
-      font-weight: bold;
-      text-align: center;
-    }
-    h1 {
-      color: #000;
-    }
+    .quote,
+    h1,
     .login-header {
-      color: #000;
-      font-weight: bold;
-      text-align: center;
-      margin-top: 20px;
-      font-size: 18px;
+      color: #fff; /* Set text color to white */
     }
     .space-after-login-form {
       margin-top: 20px;
@@ -71,41 +63,6 @@
         <button type="submit" class="btn btn-primary btn-block">Login</button>
       </form>
       <div class="space-after-login-form"></div>
-      <h2 class="login-header">Or Log In With:</h2>
-      <div class="text-center mt-4">
-        <button class="btn btn-outline-primary mr-2" data-toggle="tab" href="#microsoft">LogIn with Microsoft</button>
-        <button class="btn btn-outline-danger" data-toggle="tab" href="#google">LogIn with Google</button>
-      </div>
-      <div class="tab-content mt-4" id="myTabContent">
-        <div class="tab-pane fade" id="microsoft">
-          <!-- Microsoft sign-in content -->
-          <form>
-            <div class="form-group">
-              <label for="microsoftEmail">Microsoft Email</label>
-              <input type="email" class="form-control" id="microsoftEmail" placeholder="Enter your Microsoft email">
-            </div>
-            <div class="form-group">
-              <label for="microsoftPassword">Password</label>
-              <input type="password" class="form-control" id="microsoftPassword" placeholder="Enter your password">
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">LogIn with Microsoft</button>
-          </form>
-        </div>
-        <div class="tab-pane fade" id="google">
-          <!-- Google sign-in content -->
-          <form>
-            <div class="form-group">
-              <label for="googleEmail">Google Email</label>
-              <input type="email" class="form-control" id="googleEmail" placeholder="Enter your Google email">
-            </div>
-            <div class="form-group">
-              <label for="googlePassword">Password</label>
-              <input type="password" class="form-control" id="googlePassword" placeholder="Enter your password">
-            </div>
-            <button type="submit" class="btn btn-danger btn-block">LogIn with Google</button>
-          </form>
-        </div>
-      </div>
     </div>
   </div>
 </div>

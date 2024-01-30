@@ -4,8 +4,17 @@
   <meta charset="UTF-8">
   <title>Gaming Interest Pairing Form</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     /* Additional styles for spacing and centering */
+    body {
+      background-image: url('Gears.jpg'); /* Replace 'your-background-image.jpg' with your image file path */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+      color: white; /* Text color */
+    }
     .form-group {
       margin-bottom: 20px;
     }
@@ -14,6 +23,16 @@
     }
     label {
       font-weight: bold;
+    }
+    /* Custom styles for dropdowns */
+    .custom-dropdown {
+      background-color: #fff;
+      color: #495057;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+    }
+    .custom-dropdown:hover {
+      background-color: #e9ecef;
     }
   </style>
 </head>
@@ -26,10 +45,10 @@
         <label for="age">Age:</label>
         <input type="number" class="form-control" id="age" required>
       </div>
-      <!-- Gaming Preferences - Favorite Game Genres -->
+      <!-- Gaming Preferences - Favorite Game Genres (Dropdown) -->
       <div class="form-group">
         <label for="favoriteGenres">Favorite Game Genres:</label>
-        <select class="form-control" id="favoriteGenres" multiple>
+        <select class="form-control custom-dropdown" id="favoriteGenres" single>
           <option>Action</option>
           <option>Adventure</option>
           <option>RPG</option>
@@ -67,7 +86,7 @@
       <!-- Preferred Gaming Style -->
       <div class="form-group">
         <label for="gamingStyle">Preferred Gaming Style:</label>
-        <select class="form-control" id="gamingStyle">
+        <select class="form-control custom-dropdown" id="gamingStyle">
           <option>Competitive</option>
           <option>Casual</option>
           <option>Cooperative</option>
@@ -75,24 +94,6 @@
           <!-- Add more options as needed -->
         </select>
       </div>
-      <!-- Communication and Interaction -->
-      <div class="form-group">
-        <label for="communicationChannels">Preferred Communication Channels:</label>
-        <input type="text" class="form-control" id="communicationChannels" placeholder="In-game chat, Voice chat">
-      </div>
-      <div class="form-group">
-        <label for="externalTools">Willingness to Use External Tools:</label>
-        <select class="form-control" id="externalTools">
-          <option>Yes</option>
-          <option>No</option>
-        </select>
-      </div>
-      <!-- Matching Criteria -->
-      <div class="form-group">
-        <label for="matchingCriteria">Desired Matching Criteria:</label>
-        <textarea class="form-control" id="matchingCriteria" rows="3" placeholder="Similar skill level, Similar interests"></textarea>
-      </div>
-      <!-- Additional Information -->
       <div class="form-group">
         <label for="additionalComments">Additional Comments:</label>
         <textarea class="form-control" id="additionalComments" rows="3"></textarea>
