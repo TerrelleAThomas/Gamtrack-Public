@@ -1,14 +1,16 @@
+// Selection.js
+
 import React from 'react';
 
-const UserSelectionPage = () => {
-    const showWarning = () => {
-        const confirmWork = window.confirm("Do you work for GamTrack?");
-        if (confirmWork) {
-            window.alert("Thank you for your confirmation!");
-            // Additional actions for admin access or redirection can be added here
+function UserSelectionPage() {
+    const confirmProceed = (destination) => {
+        const confirmMessage = "Are you sure you want to proceed?";
+        if (window.confirm(confirmMessage)) {
+            // Redirect to the specified destination
+            window.location.href = destination;
         } else {
-            window.alert("Please proceed as a user.");
-            // Additional actions for user access or redirection can be added here
+            alert("Action canceled.");
+            // Additional actions when the user cancels the action can be added here
         }
     };
 
@@ -18,12 +20,16 @@ const UserSelectionPage = () => {
             <div className="selection-box">
                 <h2>What is your use of the website today?</h2>
                 <div>
-                    <button className="btn btn-admin" onClick={showWarning}>Admin</button>
-                    <button className="btn btn-user">User</button>
+                    <button className="btn btn-current-user" onClick={() => confirmProceed('current_user_page.html')}>
+                        Current User
+                    </button>
+                    <button className="btn btn-new-user" onClick={() => confirmProceed('new_user_page.html')}>
+                        New User
+                    </button>
                 </div>
             </div>
         </div>
     );
-};
+}
 
 export default UserSelectionPage;

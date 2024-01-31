@@ -34,7 +34,7 @@ const AdminDashboard = () => {
                                     <a className="nav-link" href="#settings" onClick={(event) => { event.preventDefault(); showTab('settings'); }}>Settings</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#emergencyResponse" onClick={(event) => { event.preventDefault(); showTab('emergencyResponse'); }}>Emergency Response</a>
+                                    <a className="nav-link" href="#reports" onClick={(event) => { event.preventDefault(); showTab('reports'); }}>Reports</a>
                                 </li>
                             </ul>
                         </div>

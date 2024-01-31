@@ -9,6 +9,9 @@ import Selection from "./selection";
 import IndiviualPost from "./IndiviualPost";
 import SignUp from "./SignUp";
 import Login from "./Login";
+import Pairing from "./Pairing";
+import UserProfile from "./UserProfile";
+import Recommendation from "./Recommendation";
 
 
 function App() {
@@ -22,6 +25,9 @@ function App() {
               <Route path="/" element={<Selection />} />
               <Route path="/LoginIn" element={<Login/>} />
               <Route path="/About Us" element={<AboutUs/>} />
+              <Route path="/" element={<Pairing />} />
+              <Route path="/" element={<UserProfile />} />
+              <Route path="/" element={<Recommendation />} />
               <Route path="/Search"  element={<Search/>} />
               <Route path="/"          element={<Post/>} />
               <Route path="/" element={<IndiviualPost/>} />
