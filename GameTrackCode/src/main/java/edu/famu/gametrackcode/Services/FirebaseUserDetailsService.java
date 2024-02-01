@@ -1,4 +1,4 @@
-package edu.famu.gametrackcode.Security;
+package edu.famu.gametrackcode.Services;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;

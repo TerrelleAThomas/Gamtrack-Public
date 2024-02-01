@@ -3,6 +3,7 @@ package edu.famu.gametrackcode.Security;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.google.firebase.auth.FirebaseAuth;
+import edu.famu.gametrackcode.Services.FirebaseUserDetailsService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
