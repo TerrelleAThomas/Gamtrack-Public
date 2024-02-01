@@ -1,19 +1,11 @@
 package edu.famu.gametrackcode.Utli;
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.lang.Nullable;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import com.google.firebase.database.annotations.Nullable;
+import lombok.Data;
 
-@Configuration
-@EnableWebMvc
-
+@Data
 public class RegistrationRequest {
-
     private String email;
     private String password;
     private @Nullable String displayName;
-
-
-
 }
