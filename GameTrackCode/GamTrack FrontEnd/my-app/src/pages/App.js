@@ -1,17 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import AboutUs from './AboutUs';
-import Contact from "./Contact";
-import Search from "./Search";
+import AboutUs from '../Gamer/AboutUs';
+import Contact from "../Gamer/Contact";
+import Search from "../Gamer/Search";
 import {AuthProvider} from "./AuthContext";
-import Post from "./Post";
-import Selection from "./selection";
-import IndiviualPost from "./IndiviualPost";
+import Post from "../Gamer/Post";
+import Selection from "../Gamer/selection";
+import IndiviualPost from "../Gamer/IndiviualPost";
 import SignUp from "./SignUp";
 import Login from "./Login";
-import Pairing from "./Pairing";
-import UserProfile from "./UserProfile";
-import Recommendation from "./Recommendation";
+import Pairing from "../Gamer/Pairing";
+import UserProfile from "../Gamer/UserProfile";
+import Recommendation from "../Gamer/Recommendation";
 
 
 function App() {
