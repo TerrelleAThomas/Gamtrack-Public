@@ -1,10 +1,12 @@
 package edu.famu.gametrackcode.Model;
 
-import jakarta.annotation.Nullable;
+import com.google.cloud.firestore.annotation.DocumentId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
+import java.security.Timestamp;
 
 
 @Data
@@ -16,11 +18,16 @@ public class User {
     @DocumentId
 
     private @Nullable String userId;
-    private  String Fullname
-
-
-
-
+    private Timestamp createdAt;
+    private String email;
+    private String firstName;
+    private String lastName;
+    private String role;
+    private String username;
+    private boolean isActive;
+    public boolean getIsActive() {
+        return isActive;
+    }
 
 
 }

@@ -1,5 +1,8 @@
 package edu.famu.gametrackcode.Security;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseToken;
 import edu.famu.gametrackcode.Utli.JwtUtil;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
@@ -23,7 +26,74 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class FirebaseAuthenticationFilter {
+public class FirebaseAuthenticationFilter extends OncePerRequestFilter {
 
 
+    private AuthenticationManager authenticationManager;
+    private FirebaseAuthenticationFailureHandler failureHandler;
+
+    public FirebaseAuthenticationFilter( AuthenticationManager authenticationManager, FirebaseAuthenticationFailureHandler failureHandler) {
+
+        this.authenticationManager = authenticationManager;
+        this.failureHandler = failureHandler;
+
+    }
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        try {
+            String authToken = extractAuthenticationTokenFromRequest(request);
+
+            if (StringUtils.hasText(authToken)) {
+                FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(authToken);
+                String uid = decodedToken.getUid();
+                Collection<GrantedAuthority> authorities = new ArrayList<>();
+                authorities.add(new SimpleGrantedAuthority("USER"));
+                Authentication authentication = new UsernamePasswordAuthenticationToken(uid, null, authorities);
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            }
+            else
+            {
+                authToken = extractAuthorizationTokenFromRequest(request);
+
+                if (StringUtils.hasText(authToken)) {
+                    Claims claims = JwtUtil.getClaimsFromToken(authToken);
+                    String uid = claims.getSubject();
+                    Collection<GrantedAuthority> authorities = new ArrayList<>();
+                    authorities.add(new SimpleGrantedAuthority("USER"));
+                    Authentication authentication = new UsernamePasswordAuthenticationToken(uid, null, authorities);
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                }
+            }
+        } catch (AuthenticationException e) {
+            failureHandler.onAuthenticationFailure(request, response, e);
+            return;
+        } catch (FirebaseAuthException e) {
+            throw new RuntimeException(e);
+        }
+
+        filterChain.doFilter(request, response);
+    }
+
+    private String extractAuthenticationTokenFromRequest(HttpServletRequest request) {
+        String authToken = request.getHeader("Authorization");
+        if (StringUtils.hasText(authToken) && authToken.startsWith("Bearer ")) {
+            return authToken.substring(7);
+        }
+        return null;
+    }
+
+    private String extractAuthorizationTokenFromRequest(HttpServletRequest request) {
+        return request.getHeader("X-Auth-Token");
+    }
+
+
+    public void setAuthenticationManager(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
+    }
+
+    public void setAuthenticationFailureHandler(FirebaseAuthenticationFailureHandler failureHandler) {
+        this.failureHandler = failureHandler;
+    }
 }
+

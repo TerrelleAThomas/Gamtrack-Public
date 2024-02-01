@@ -1,7 +1,6 @@
 package edu.famu.gametrackcode.Security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.famu.gametrackcode.Utli.ErrorMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
@@ -11,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
+import edu.famu.gametrackcode.Utli.ErrorMessage;
 
 import java.io.IOException;
 

@@ -1,5 +1,6 @@
 package edu.famu.gametrackcode.Security;
 
+import com.google.firebase.auth.UserRecord;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,6 +1,8 @@
 package edu.famu.gametrackcode.Security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import com.google.firebase.auth.FirebaseAuth;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +12,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.AuthenticationEntryPoint;
@@ -27,8 +31,9 @@ import java.util.Map;
 
 @Configuration
 @EnableWebSecurity
-@EnableWebSecurity(securedEnabled = true, jsr250Enabled = true, prePostEnabled = true)
-public class FirebaseAuthenticationConfig  {
+@EnableGlobalMethodSecurity(securedEnabled = true, jsr250Enabled = true, prePostEnabled = true)
+public class FirebaseAuthenticationConfig extends WebSecurityConfigurerAdapter {
+
     private final FirebaseAuth firebaseAuth;
 
     @Autowired
@@ -106,5 +111,4 @@ public class FirebaseAuthenticationConfig  {
     public FirebaseAuthenticationProvider authenticationProvider() {
         return new FirebaseAuthenticationProvider(firebaseAuth);
     }
-
 }
