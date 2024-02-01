@@ -105,7 +105,7 @@ public class FirebaseAuthenticationConfig extends WebSecurityConfigurerAdapter {
     @Override
     @Bean
     public UserDetailsService userDetailsService() {
-        return new FirebaseUserDetailsService(firebaseAuth);
+        return (UserDetailsService) new FirebaseUserDetailsService(firebaseAuth);
     }
 
     @Bean
