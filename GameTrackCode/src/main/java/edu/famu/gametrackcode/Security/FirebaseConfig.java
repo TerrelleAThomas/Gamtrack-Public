@@ -32,4 +32,4 @@ public class FirebaseConfig {
         return FirebaseAuth.getInstance();
     }
 }
-}
+

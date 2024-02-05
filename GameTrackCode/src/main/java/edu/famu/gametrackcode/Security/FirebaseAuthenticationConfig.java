@@ -1,7 +1,6 @@
 package edu.famu.gametrackcode.Security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import com.google.firebase.auth.FirebaseAuth;
 import edu.famu.gametrackcode.Services.FirebaseUserDetailsService;
 import org.apache.commons.logging.Log;
@@ -105,7 +104,7 @@ public class FirebaseAuthenticationConfig extends WebSecurityConfigurerAdapter {
     @Override
     @Bean
     public UserDetailsService userDetailsService() {
-        return (UserDetailsService) new FirebaseUserDetailsService(firebaseAuth);
+        return new FirebaseUserDetailsService(firebaseAuth);
     }
 
     @Bean

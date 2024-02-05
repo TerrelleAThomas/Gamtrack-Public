@@ -10,10 +10,13 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import javax.naming.AuthenticationException;
 import java.util.Collections;
 
-
 public class FirebaseAuthenticationProvider implements AuthenticationProvider {
+
+    private final FirebaseAuth firebaseAuth;
+
     public FirebaseAuthenticationProvider(FirebaseAuth firebaseAuth) {
         this.firebaseAuth = firebaseAuth;
     }
