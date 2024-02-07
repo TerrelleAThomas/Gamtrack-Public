@@ -1,6 +1,5 @@
 package edu.famu.gametrackcode.Services;
 
-
 import com.google.api.core.ApiFuture;
 import com.google.cloud.Timestamp;
 import com.google.cloud.firestore.*;
@@ -19,27 +18,26 @@ public class UserService {
     }
 
     private boolean doesFieldExist(String field) throws ExecutionException, InterruptedException {
-        //field can not be empty
+        // Field cannot be empty
         if (field.isEmpty())
             return false;
-        //get reference
+        // Get reference
         CollectionReference collectionReference = db.collection("Users");
         ApiFuture<QuerySnapshot> future = collectionReference.limit(1).get();
         QuerySnapshot querySnapshot = future.get();
 
-        //return if no document
+        // Return if no document
         if (querySnapshot.isEmpty()) {
             return false;
         }
-        //
+
         DocumentSnapshot docSnap = querySnapshot.getDocuments().get(0);
         return docSnap.contains(field);
     }
 
     public ArrayList<User> getUsers(String searchField, String value) throws ExecutionException, InterruptedException {
-        //get query of users
         Query query = db.collection("Users");
-        //apply
+        // Apply
         if (doesFieldExist(searchField)) {
             query = query.whereGreaterThanOrEqualTo(searchField, value)
                     .whereLessThan(searchField, value + "\uf8ff");
@@ -73,7 +71,7 @@ public class UserService {
     }
 
     public void updateUser(String id, Map<String, Object> updateValues) {
-        String[] allowed = {"email", "firstName", "lastName","isActive"};
+        String[] allowed = {"email", "firstName", "lastName", "isActive"};
         List<String> list = Arrays.asList(allowed);
         Map<String, Object> formattedValues = new HashMap<>();
 
@@ -117,6 +115,7 @@ public class UserService {
         ApiFuture<QuerySnapshot> future = query.get();
         return future.get().getDocuments().get(0).getId();
     }
+
     public User getUserByEmail(String email) throws ExecutionException, InterruptedException {
         CollectionReference usersCollection = db.collection("Users");
         Query query = usersCollection.whereEqualTo("email", email).limit(1);
