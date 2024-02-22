@@ -2,9 +2,9 @@ package edu.famu.gametrackcode.Model;
 
 import com.google.cloud.firestore.annotation.DocumentId;
 import com.google.protobuf.Timestamp;
+import com.google.protobuf.util.Timestamps;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import com.google.protobuf.util.Timestamps;
 import lombok.NoArgsConstructor;
 import org.springframework.lang.Nullable;
 
@@ -13,15 +13,18 @@ import java.text.ParseException;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
-public class Announcements {
+public class Game {
     @DocumentId
 
-    protected @Nullable String AnnouncementId;
-    protected String AnnouncementContent;
-    protected @Nullable Timestamp DateCreated;
+    protected @Nullable String GameId;
+    protected String Tile;
+    protected String Description;
+    protected String Sports;
+    protected @Nullable Timestamp ReleaseDate;
 
-    void setDateCreated(String dateCreated) throws ParseException {
-        this.DateCreated = Timestamps.parse(dateCreated);
+    void ReleaseDate(String ReleaseDate) throws ParseException {
+        this.ReleaseDate = Timestamps.parse(ReleaseDate);
     }
+
+
 }

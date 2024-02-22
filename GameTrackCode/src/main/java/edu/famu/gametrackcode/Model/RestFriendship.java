@@ -1,4 +1,4 @@
 package edu.famu.gametrackcode.Model;
 
-public class IGDB {
+public class RestFriendship {
 }

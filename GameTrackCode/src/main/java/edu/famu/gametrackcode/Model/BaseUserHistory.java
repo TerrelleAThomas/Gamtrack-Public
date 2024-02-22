@@ -1,4 +1,4 @@
 package edu.famu.gametrackcode.Model;
 
-public class BasePostComment {
+public class BaseUserHistory {
 }

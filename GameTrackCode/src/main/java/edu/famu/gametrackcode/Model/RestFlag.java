@@ -1,4 +1,4 @@
 package edu.famu.gametrackcode.Model;
 
-public class UserGamer {
+public class RestFlag {
 }
