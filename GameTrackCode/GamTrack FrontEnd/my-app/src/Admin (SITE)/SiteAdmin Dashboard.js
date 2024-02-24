@@ -1,6 +1,6 @@
 import React from 'react';
 
-function AdminDashboard() {
+function SiteAdminDashboard() {
     const handleNavLinkClick = (event) => {
         event.preventDefault();
         const tabId = event.target.getAttribute('href').substring(1);
@@ -108,4 +108,4 @@ function AdminDashboard() {
     );
 }
 
-export default AdminDashboard;
+export default SiteAdminDashboard;

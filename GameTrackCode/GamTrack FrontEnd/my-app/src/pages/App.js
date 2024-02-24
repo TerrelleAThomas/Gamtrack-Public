@@ -5,37 +5,68 @@ import Contact from "../Gamer/Contact";
 import Search from "../Gamer/Search";
 import {AuthProvider} from "./AuthContext";
 import Post from "../Gamer/Post";
-import Selection from "../Gamer/selection";
 import IndiviualPost from "../Gamer/IndiviualPost";
 import SignUp from "./SignUp";
 import Login from "./Login";
 import Pairing from "../Gamer/Pairing";
 import UserProfile from "../Gamer/UserProfile";
-import Recommendation from "../Gamer/Recommendation";
+import AdminDashboard from "../Admin/Admin Dashboard";
+import AdminReports from "../Admin/Report";
+import UserManagement from "../Admin/Search";
+import UserDatabase from "../Admin/User";
+import SiteAdminDashboard from "../Admin (SITE)/SiteAdmin Dashboard";
+import AnnouncementPage from "../Admin (SITE)/Annoucement";
+import GameManagement from "../Admin (SITE)/Game";
+import PostCommentModeration from "../Admin (SITE)/Moderation";
+import FriendshipPage from "../Gamer/FriendshipList";
+import Message from "../Gamer/Message";
+import RecommendedGames from "../Gamer/Recommendation";
 
 
 function App() {
   return (
-      <Router>
-        <AuthProvider>
-          <Navbar />
-          <div className="container mt-3">
-            <Routes>
-              <Route path="/Sign" element={<SignUp />} />
-              <Route path="/" element={<Selection />} />
-              <Route path="/LoginIn" element={<Login/>} />
-              <Route path="/About Us" element={<AboutUs/>} />
-              <Route path="/" element={<Pairing />} />
-              <Route path="/" element={<UserProfile />} />
-              <Route path="/" element={<Recommendation />} />
-              <Route path="/Search"  element={<Search/>} />
-              <Route path="/"          element={<Post/>} />
-              <Route path="/" element={<IndiviualPost/>} />
-              <Route path="/Contact"  element={<Contact/>} />
-            </Routes>
-          </div>
-        </AuthProvider>
-      </Router>
+      <AuthProvider>
+
+        <Router>
+
+          <Routes>
+
+            <Route element={<Login />} path='/'/>
+            <Route element={<Login />} path='/login'/>
+            <Route element={<SignUp />} path='/signup'/>
+
+            <Route element={<UserRoute />}>
+              <Route element={<AboutUs />} path='User' />
+              <Route element={<Pairing />} path='pairing' />
+              <Route element={<Search />} path='search' />
+              <Route element={<Post />} path='post' />
+              <Route element={<Contact />} path='contact' />
+              <Route element={<Message />} path='message' />
+              <Route element={<UserProfile />} path='Profile' />
+              <Route element={<FriendshipPage />} path='Friendship' />
+              <Route element={<IndiviualPost />} path='Individual' />
+              <Route element={<RecommendedGames />} path='Games' />
+            </Route>
+
+            <Route element={<SiteAdminRoute />}>
+              <Route element={<SiteAdminDashboard />} path='/Site' />
+              <Route element={<AnnouncementPage />} path='/Announcement' />
+                <Route element={<GameManagement />} path='/Game' />
+                  <Route element={<PostCommentModeration />} path='Moderation' />
+            </Route>
+
+
+            <Route element={<AdminRoute/>}>
+              <Route element={<AdminDashboard />} path='/AdminDashboard' />
+              <Route element={<UserManagement />} path='/UserManagement' />
+              <Route element={<AdminReports />} path='/Reports' />
+              <Route element={<UserDatabase />} path='Database' />
+
+            </Route>
+
+          </Routes>
+        </Router>
+      </AuthProvider>
   );
 }
 

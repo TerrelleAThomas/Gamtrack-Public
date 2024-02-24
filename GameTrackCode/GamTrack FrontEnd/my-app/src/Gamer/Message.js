@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-function GameTrack() {
+function Message() {
     useEffect(() => {
         // Your Firebase project configuration
         const firebaseConfig = {
@@ -123,4 +123,4 @@ function GameTrack() {
     );
 }
 
-export default GameTrack;
+export default Message;
