@@ -82,16 +82,15 @@ public class FirebaseAuthenticationConfig extends WebSecurityConfigurerAdapter {
         return source;
     }
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.cors().configurationSource(corsConfigurationSource()).and().csrf().disable().formLogin().disable()
                 .httpBasic().disable().exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint())
                 .and().authorizeRequests()
-                .antMatchers(restSecProps.getAllowedPublicApis().toArray(String[]::new)).permitAll()
+                .antMatchers(restSecProps.getAllowedPublicApis().toArray(new String[0])).permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll().anyRequest().authenticated().and()
-                .addFilterBefore(new FirebaseAuthenticationFilter(authenticationManagerBean()), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new FirebaseAuthenticationFilter(firebaseAuthenticationFailureHandlerBean()),
+                        UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
@@ -110,5 +109,10 @@ public class FirebaseAuthenticationConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public FirebaseAuthenticationProvider authenticationProvider() {
         return new FirebaseAuthenticationProvider(firebaseAuth);
+    }
+
+    @Bean
+    public FirebaseAuthenticationFailureHandler firebaseAuthenticationFailureHandlerBean() {
+        return new FirebaseAuthenticationFailureHandler();
     }
 }

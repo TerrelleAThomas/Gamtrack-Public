@@ -4,7 +4,6 @@ import AboutUs from '../Gamer/AboutUs';
 import Contact from "../Gamer/Contact";
 import Search from "../Gamer/Search";
 import {AuthProvider} from "./AuthContext";
-import Post from "../Gamer/Post";
 import IndiviualPost from "../Gamer/IndiviualPost";
 import SignUp from "./SignUp";
 import Login from "./Login";
@@ -21,6 +20,7 @@ import PostCommentModeration from "../Admin (SITE)/Moderation";
 import FriendshipPage from "../Gamer/FriendshipList";
 import Message from "../Gamer/Message";
 import RecommendedGames from "../Gamer/Recommendation";
+import PostPage from "../Gamer/Post";
 
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
               <Route element={<AboutUs />} path='User' />
               <Route element={<Pairing />} path='pairing' />
               <Route element={<Search />} path='search' />
-              <Route element={<Post />} path='post' />
+              <Route element={<PostPage />} path='post' />
               <Route element={<Contact />} path='contact' />
               <Route element={<Message />} path='message' />
               <Route element={<UserProfile />} path='Profile' />
