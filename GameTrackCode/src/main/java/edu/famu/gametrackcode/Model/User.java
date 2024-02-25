@@ -17,6 +17,7 @@ public class User {
     private String gameConsole;
     private boolean isActive;
     private boolean isAdmin;
+    private boolean isSiteAdmin;
     private String password;
     private String username;
 }

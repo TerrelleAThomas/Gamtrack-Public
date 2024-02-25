@@ -21,6 +21,9 @@ import FriendshipPage from "../Gamer/FriendshipList";
 import Message from "../Gamer/Message";
 import RecommendedGames from "../Gamer/Recommendation";
 import PostPage from "../Gamer/Post";
+import AdminPrivateRoute from "../Private Routes/AdminRoute";
+import UserRoute from "../Private Routes/UserRoute";
+import SiteAdminRoute from "../Private Routes/SiteAdminRoute";
 
 
 function App() {
@@ -48,21 +51,25 @@ function App() {
               <Route element={<RecommendedGames />} path='Games' />
             </Route>
 
-            <Route element={<SiteAdminRoute />}>
+            <Switch>
+              <SiteAdminRoute path="/admin/dashboard" component={SiteAdminDashboard} />
+              <Route path="/login" component={LoginPage} />
               <Route element={<SiteAdminDashboard />} path='/Site' />
               <Route element={<AnnouncementPage />} path='/Announcement' />
-                <Route element={<GameManagement />} path='/Game' />
-                  <Route element={<PostCommentModeration />} path='Moderation' />
-            </Route>
+              <Route element={<GameManagement />} path='/Game' />
+              <Route element={<PostCommentModeration />} path='Moderation' />
+              {/* Define other routes here */}
+            </Switch>
 
-
-            <Route element={<AdminRoute/>}>
+            <Switch>
+              <AdminPrivateRoute path="/admin/dashboard" component={AdminDashboard} />
+              <Route path="/login" component={LoginPage} />
               <Route element={<AdminDashboard />} path='/AdminDashboard' />
               <Route element={<UserManagement />} path='/UserManagement' />
               <Route element={<AdminReports />} path='/Reports' />
               <Route element={<UserDatabase />} path='Database' />
-
-            </Route>
+              {/* Define other routes here */}
+            </Switch>
 
           </Routes>
         </Router>
