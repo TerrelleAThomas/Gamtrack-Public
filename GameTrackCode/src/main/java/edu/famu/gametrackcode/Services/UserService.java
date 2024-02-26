@@ -23,6 +23,26 @@ public class UserService {
         return future.get().getId();
     }
 
+    public void updateUser(String _Id, Map<String, Object> updateValues) throws ExecutionException, InterruptedException {
+        DocumentReference userDocRef = db.collection("users").document(_Id);
+        ApiFuture<WriteResult> writeResult = userDocRef.update(updateValues);
+        writeResult.get();
+    }
+
+    public User getUserById(String _Id) throws ExecutionException, InterruptedException {
+        DocumentReference docRef = db.collection("users").document(_Id);
+        ApiFuture<DocumentSnapshot> future = docRef.get();
+        DocumentSnapshot document = future.get();
+        if (document.exists()) {
+            return document.toObject(User.class);
+        } else {
+            // Handle the case where the user doesn't exist in the database
+            // This might involve throwing a custom exception or returning null
+            return null;
+        }
+    }
+
+
     public void updateUserByUsername(String username, Map<String, Object> updateValues) throws ExecutionException, InterruptedException {
         Query query = db.collection("User").whereEqualTo("username", username);
         ApiFuture<QuerySnapshot> future = query.get();

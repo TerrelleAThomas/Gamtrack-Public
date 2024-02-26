@@ -44,6 +44,10 @@ security:
     - /css/**
     - /js/**
     - /api/event/{eventId}
+    - /api/comments
+    - /api/posts
+    - /api/user
+    - /api/usersearch
   exposed-headers:
     - X-Xsrf-Token
     - X-Auth-Token
