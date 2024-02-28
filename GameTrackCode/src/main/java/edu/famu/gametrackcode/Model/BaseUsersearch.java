@@ -1,4 +1,13 @@
 package edu.famu.gametrackcode.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class BaseUsersearch {
+
+    protected String searchId;
 }

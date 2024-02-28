@@ -10,12 +10,19 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RestSystemActivityLog extends BaseSystemActivityLog {
+public class RestPost extends BasePost {
+    private DocumentReference gameId;
     private DocumentReference userId;
 
-    public RestSystemActivityLog(String ActivityDescription, String LogId, Timestamp createdAt, DocumentReference userId) {
-        super(ActivityDescription, LogId, createdAt);
+    public RestPost(String PostId, Timestamp DeleteDate, String Title, Timestamp UpdateDate, String content, Timestamp creationDate, DocumentReference gameId, DocumentReference userId) {
+        super(PostId, DeleteDate, Title, UpdateDate, content, creationDate);
+        this.gameId = gameId;
         this.userId = userId;
+    }
+
+
+    public void gameId(String gameId, Firestore db) {
+        this.gameId = db.collection("IGBD").document(gameId);
     }
 
     public void userId(String userId, Firestore db) {
