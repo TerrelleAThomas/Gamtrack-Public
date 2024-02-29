@@ -1,7 +1,9 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const AboutUs = () => {
+
+export default function AboutUs () {
+
     return (
         <div className="container mt-5">
             <div className="row">
@@ -55,6 +57,4 @@ const AboutUs = () => {
             </div>
         </div>
     );
-};
-
-export default AboutUs;
+}

@@ -55,25 +55,23 @@ function App() {
               <Route element={<Logout />} path='LogOut' />
             </Route>
 
-            <Switch>
-              <Route path="/login" component={LoginPage} />
-              <SiteAdminRoute path="/admin/dashboard" component={SiteAdminDashboard} />
+
+              <Route element={<SiteAdminRoute />}>
               <Route element={<SiteAdminDashboard />} path='/Site' />
               <Route element={<AnnouncementPage />} path='/Announcement' />
               <Route element={<GameManagement />} path='/Game' />
               <Route element={<PostCommentModeration />} path='Moderation' />
               {/* Define other routes here */}
-            </Switch>
+              </Route>
 
-            <Switch>
-              <Route path="/login" component={LoginPage} />
-              <AdminPrivateRoute path="/admin/dashboard" component={AdminDashboard} />
+
+             <Route element={<AdminPrivateRoute />}>
               <Route element={<AdminDashboard />} path='/AdminDashboard' />
               <Route element={<UserManagement />} path='/UserManagement' />
               <Route element={<AdminReports />} path='/Reports' />
               <Route element={<UserDatabase />} path='Database' />
               {/* Define other routes here */}
-            </Switch>
+             </Route>
 
           </Routes>
         </Router>

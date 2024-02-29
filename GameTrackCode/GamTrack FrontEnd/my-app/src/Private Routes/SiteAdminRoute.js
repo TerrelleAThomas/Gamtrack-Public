@@ -1,23 +1,25 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const SiteAdminRoute = ({ component: Component, ...rest }) => (
-    <Route {...rest} render={props => {
-        const currentUser = authenticationService.currentUserValue; // Implement this
+export default function SiteAdminRoute () {
 
-        // If the user is not logged in, redirect to the login page
-        if (!currentUser) {
-            return <Redirect to={{ pathname: '/login', state: { from: props.location } }} />;
-        }
+    ({ component: Component, ...rest }) => (
+        <Route {...rest} render={props => {
+            const currentUser = authenticationService.currentUserValue; // Implement this
 
-        // If the user is not a SiteAdmin, redirect to a "not authorized" page
-        if (currentUser.role !== 'SiteAdmin') {
-            return <Redirect to={{ pathname: '/not-authorized' }} />;
-        }
+            // If the user is not logged in, redirect to the login page
+            if (!currentUser) {
+                return <Redirect to={{ pathname: '/login', state: { from: props.location } }} />;
+            }
 
-        // Authorized as SiteAdmin, so render the component
-        return <Component {...props} />;
-    }} />
-);
+            // If the user is not a SiteAdmin, redirect to a "not authorized" page
+            if (currentUser.role !== 'SiteAdmin') {
+                return <Redirect to={{ pathname: '/not-authorized' }} />;
+            }
 
-export default SiteAdminRoute;
+            // Authorized as SiteAdmin, so render the component
+            return <Component {...props} />;
+        }} />
+    );
+
+}

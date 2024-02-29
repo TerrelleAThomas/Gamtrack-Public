@@ -1,7 +1,8 @@
 import React from 'react';
 import firebase from './firebaseConfig'; // Adjust this import path to your Firebase config file
 
-const UserDatabase = () => {
+
+export default function UserDatabase () {
     // Function to update the user status in Firebase
     const updateUserStatus = (userId, status) => {
         // Placeholder for Firebase logic to update user status
@@ -82,6 +83,4 @@ const UserDatabase = () => {
             </div>
         </div>
     );
-};
-
-export default UserDatabase;
+}

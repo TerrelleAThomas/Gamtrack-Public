@@ -2,7 +2,8 @@ import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-const UserProfilePage = () => {
+
+export default function UserProfilePage () {
     // Function to handle flagging a post or comment
     const handleFlag = (type, id) => {
         // Reference to the Firebase database
@@ -76,5 +77,3 @@ const UserProfilePage = () => {
         </div>
     );
 };
-
-export default UserProfilePage;

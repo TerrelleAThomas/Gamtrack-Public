@@ -1,21 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import firebase from 'firebase/app';
+
 import 'firebase/firestore';
+import {db} from "../pages/FirebaseConfig";
 
-const firebaseConfig = {
-    // Add your Firebase configuration here
-    // apiKey: "",
-    // authDomain: "",
-    // projectId: "",
-    // storageBucket: "",
-    // messagingSenderId: "",
-    // appId: ""
-};
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
-const AnnouncementPage = () => {
+export default function AnnouncementPage () {
     const [announcements, setAnnouncements] = useState([]);
     const [deletedAnnouncements, setDeletedAnnouncements] = useState([]);
     const [announcementTitle, setAnnouncementTitle] = useState('');
@@ -128,6 +117,5 @@ const AnnouncementPage = () => {
             </div>
         </div>
     );
-};
 
-export default AnnouncementPage;
+}

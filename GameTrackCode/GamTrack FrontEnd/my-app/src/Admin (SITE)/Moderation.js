@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
-function PostCommentModeration() {
+
+export default function PostCommentModeration () {
     useEffect(() => {
         fetchComments();
     }, []);
@@ -72,5 +73,3 @@ function PostCommentModeration() {
         </div>
     );
 }
-
-export default PostCommentModeration;

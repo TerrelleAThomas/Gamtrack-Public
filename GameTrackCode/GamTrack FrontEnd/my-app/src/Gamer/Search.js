@@ -1,7 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const SearchBar = () => {
+
+export default function SearchBar () {
     return (
         <div className="container search-container">
             <h2 className="search-title">Search</h2>
@@ -12,5 +13,3 @@ const SearchBar = () => {
         </div>
     );
 };
-
-export default SearchBar;

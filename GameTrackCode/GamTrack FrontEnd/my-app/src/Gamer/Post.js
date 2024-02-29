@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const PostPage = () => {
+
+export default function PostPage () {
     const [posts, setPosts] = useState([]);
     const [postContent, setPostContent] = useState('');
     const [postImage, setPostImage] = useState(null);
@@ -67,6 +68,5 @@ const PostPage = () => {
             ))}
         </div>
     );
-};
 
-export default PostPage;
+}

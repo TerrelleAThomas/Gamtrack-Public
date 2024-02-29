@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-function AdminDashboard() {
+
+export default function AdminDashboard () {
     // Inline style for the background image
     const backgroundStyle = {
         backgroundImage: `url('/Pictures/Admin.jpg')`,
@@ -37,5 +38,3 @@ function AdminDashboard() {
         </div>
     );
 }
-
-export default AdminDashboard;

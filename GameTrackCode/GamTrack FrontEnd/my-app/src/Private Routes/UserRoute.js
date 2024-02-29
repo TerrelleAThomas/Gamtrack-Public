@@ -1,17 +1,11 @@
-import React, {useContext} from 'react';
-import {Route, Redirect, Outlet, Navigate} from "react-router-dom";
-import {AuthContext} from "../context/AuthContext";
-import {useAuth} from "../pages/AuthContext";
+import React from 'react';
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from './AuthContext'; // Adjust the path based on your project structure
 
 export default function UserRoute() {
-    const { currentUser } = useAuth();
+    const { currentUser, userProfile } = useAuth();
 
-    if (currentUser && (sessionStorage.getItem("role") === 'user')){
-        return <Outlet/>
-    }
-    else{
-        return <Navigate to="/login" />;
-    }
+    const isUserAuthorized = currentUser && !userProfile.IsAdmin && !userProfile.IsSiteAdmin;
+
+    return isUserAuthorized ? <Outlet /> : <Navigate to="/login" replace />;
 }
-
-export default PrivateRoute;

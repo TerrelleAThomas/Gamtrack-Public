@@ -4,7 +4,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import 'firebase/auth';
 import { auth } from "./FirebaseConfig"; // Assuming this is correctly set up
 
-const LoginForm = () => {
+
+export default function LoginForm () {
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -77,6 +78,4 @@ const LoginForm = () => {
             </div>
         </div>
     );
-};
-
-export default LoginForm;
+}

@@ -1,7 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const ContactUs = () => {
+
+export default function ContactUs () {
     return (
         <div className="container">
             <div className="text-center">
@@ -45,6 +46,4 @@ const ContactUs = () => {
             </form>
         </div>
     );
-};
-
-export default ContactUs;
+}

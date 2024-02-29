@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-const RecommendedGames = () => {
+
+export default function  RecommendedGames () {
     const [games, setGames] = useState([]);
 
     useEffect(() => {
@@ -47,6 +48,4 @@ const RecommendedGames = () => {
             </div>
         </div>
     );
-};
-
-export default RecommendedGames;
+}

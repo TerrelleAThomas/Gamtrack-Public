@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-function Message() {
+
+export default function Message () {
     useEffect(() => {
         // Your Firebase project configuration
         const firebaseConfig = {
@@ -122,5 +123,3 @@ function Message() {
         </div>
     );
 }
-
-export default Message;

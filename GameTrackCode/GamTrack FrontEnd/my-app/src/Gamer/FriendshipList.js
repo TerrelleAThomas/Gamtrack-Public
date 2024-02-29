@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-const FriendshipPage = () => {
+
+export default function FriendshipPage () {
     const [friends, setFriends] = useState([]);
 
     useEffect(() => {
@@ -71,6 +72,4 @@ const FriendshipPage = () => {
             </div>
         </div>
     );
-};
-
-export default FriendshipPage;
+}

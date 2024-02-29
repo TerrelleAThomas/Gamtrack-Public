@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GameManagement() {
+export default function GameManagement () {
     const deleteGame = (event) => {
         const gameCard = event.target.closest('.game-card');
         if (gameCard) {
@@ -51,5 +51,3 @@ function GameManagement() {
         </div>
     );
 }
-
-export default GameManagement;

@@ -1,6 +1,7 @@
 import React from 'react';
 
-const UserPostsPage = () => {
+
+export default function UserPostsPage () {
     return (
         <div className="container mt-5">
             {/* User Posts Header */}
@@ -87,6 +88,4 @@ const UserPostsPage = () => {
 
         </div>
     );
-};
-
-export default UserPostsPage;
+}

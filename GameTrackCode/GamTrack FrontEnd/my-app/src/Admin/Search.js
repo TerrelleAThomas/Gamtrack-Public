@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const UserManagement = () => {
+export default function UserManagement () {
     const [searchId, setSearchId] = useState('');
     const [userData, setUserData] = useState({
         userName: 'User Name',
@@ -64,6 +64,4 @@ const UserManagement = () => {
             </div>
         </div>
     );
-};
-
-export default UserManagement;
+}

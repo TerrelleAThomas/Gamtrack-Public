@@ -1,48 +1,62 @@
-import React, {useContext, useEffect, useState} from 'react'
-import {auth} from '../Firebase'
-import Login from "./Login";
+import React, { useContext, useState, useEffect } from 'react';
+import { auth } from './firebase'; // Adjust this import according to your project structure
 
-export const AuthContext = React.createContext();
+const AuthContext = React.createContext();
 
-export function useAuth(){
-    return useContext(AuthContext)
+export function useAuth() {
+    return useContext(AuthContext);
 }
-export function AuthProvider({children}) {
-    const [currentUser, setCurrentUser] = useState()
-    const [loading,setLoading] = useState(true)
 
-    function SignupPage(email, password) {
-        return auth.createUserWithEmailAndPassword(email, password)
+export function AuthProvider({ children }) {
+    const [currentUser, setCurrentUser] = useState();
+    const [userProfile, setUserProfile] = useState({});
+    const [loading, setLoading] = useState(true);
 
+    // Authentication actions
+    function signup(email, password) {
+        return auth.createUserWithEmailAndPassword(email, password);
     }
 
-    function LoginForm(email,password) {
-        return auth.signInWithEmailAndPassword(email,password)
+    function login(email, password) {
+        return auth.signInWithEmailAndPassword(email, password);
     }
 
-    function logout(){
-        return auth.signOut()
+    function logout() {
+        return auth.signOut();
     }
 
-    useEffect(()=>{
-        const unsubscribe = auth.onAuthStateChanged(user =>{
-            setCurrentUser(user)
-            setLoading(false)
-        })
-        return unsubscribe
-    },[])
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            setCurrentUser(user);
+            if (user) {
+                // Fetch user profile from Firestore
+                const userProfileRef = firebase.firestore().collection('userProfiles').doc(user.uid);
+                userProfileRef.get().then(doc => {
+                    if (doc.exists) {
+                        setUserProfile(doc.data());
+                    }
+                    setLoading(false);
+                });
+            } else {
+                setUserProfile({}); // Reset userProfile when there's no user
+                setLoading(false);
+            }
+        });
 
+        return unsubscribe;
+    }, []);
 
     const value = {
         currentUser,
-        Login,
-        SignupPage,
+        userProfile,
+        signup,
+        login,
         logout,
-        LoginForm
-    }
+    };
+
     return (
         <AuthContext.Provider value={value}>
             {!loading && children}
         </AuthContext.Provider>
-    )
+    );
 }

@@ -1,6 +1,9 @@
 import React from 'react';
 
-const GamingInterestPairingForm = () => {
+
+
+export default function GamingInterestPairingForm () {
+
     return (
         <div className="container">
             <h2 className="center-content">Gaming Interest Pairing Form</h2>
@@ -76,5 +79,3 @@ const GamingInterestPairingForm = () => {
         </div>
     );
 };
-
-export default GamingInterestPairingForm;

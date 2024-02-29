@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-function AdminReports() {
+
+export default function AdminReports () {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [totalPlays, setTotalPlays] = useState(0);
@@ -84,5 +85,3 @@ function AdminReports() {
         </div>
     );
 }
-
-export default AdminReports;
