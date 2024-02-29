@@ -1,7 +1,10 @@
 import React from 'react';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Assuming Bootstrap is installed via npm
 
-const NotAuthorizedPage = () => {
+
+export default function NotAuthorizedPage () {
     return (
         <>
             <style>{`
@@ -41,6 +44,4 @@ const NotAuthorizedPage = () => {
             </div>
         </>
     );
-};
-
-export default NotAuthorizedPage;
+}

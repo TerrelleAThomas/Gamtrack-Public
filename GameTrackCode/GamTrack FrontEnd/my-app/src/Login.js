@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
 import { signInWithEmailAndPassword } from "firebase/auth";
 import 'firebase/auth';
-import { auth } from "./FirebaseConfig"; // Assuming this is correctly set up
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import { auth } from "./pages/FirebaseConfig"; // Assuming this is correctly set up
 
 
 export default function LoginForm () {

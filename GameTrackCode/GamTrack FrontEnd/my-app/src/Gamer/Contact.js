@@ -1,5 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 
 export default function ContactUs () {

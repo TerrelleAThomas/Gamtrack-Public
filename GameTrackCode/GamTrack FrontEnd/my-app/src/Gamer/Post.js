@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 
 export default function PostPage () {

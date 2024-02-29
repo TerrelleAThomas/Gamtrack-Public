@@ -1,58 +1,54 @@
 import React, { useEffect, useState } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs, doc, deleteDoc, updateDoc } from 'firebase/firestore';
+import { firebaseConfig } from '../pages/FirebaseConfig'; // Adjust the path as necessary
 
-
-export default function FriendshipPage () {
+export default function FriendshipPage() {
     const [friends, setFriends] = useState([]);
 
+    // Initialize Firebase outside of useEffect if you're using it across multiple functions
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
     useEffect(() => {
-        // Initialize Firebase
-        const firebaseConfig = {
-            // Your Firebase configuration
-        };
-        firebase.initializeApp(firebaseConfig);
-
-        // Reference to the friends collection
-        const friendsRef = firebase.database().ref('friends');
-
         // Fetch friends data from Firebase
-        friendsRef.once('value', (snapshot) => {
-            const data = snapshot.val();
-            if (data) {
-                const friendList = Object.values(data);
-                setFriends(friendList);
-            }
+        const fetchFriends = async () => {
+            const friendsRef = collection(db, 'friends');
+            const snapshot = await getDocs(friendsRef);
+            const friendList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            setFriends(friendList);
+        };
+
+        fetchFriends();
+    }, [db]); // db is a dependency here
+
+    const deleteFriend = async (id) => {
+        await deleteDoc(doc(db, 'friends', id));
+        setFriends(friends.filter(friend => friend.id !== id));
+    };
+
+    const acceptRequest = async (id) => {
+        const friendRef = doc(db, 'friends', id);
+        await updateDoc(friendRef, {
+            status: 'accepted'
         });
+        // Optionally, refresh the friends list or update the local state to reflect this change
+    };
 
-        // Cleanup Firebase connection
-        return () => firebase.app().delete();
-    }, []);
-
-    // Function to delete a friend
-    const deleteFriend = (username) => {
-        // Implement logic to delete the friend with the specified username from Firebase
-        console.log("Deleting friend: " + username);
-    }
-
-    // Function to accept a friend request
-    const acceptRequest = (username) => {
-        // Implement logic to accept the friend request from the specified username in Firebase
-        console.log("Accepting friend request from: " + username);
-    }
-
-    // Function to reject a friend request
-    const rejectRequest = (username) => {
-        // Implement logic to reject the friend request from the specified username in Firebase
-        console.log("Rejecting friend request from: " + username);
-    }
+    const rejectRequest = async (id) => {
+        const friendRef = doc(db, 'friends', id);
+        await updateDoc(friendRef, {
+            status: 'rejected'
+        });
+        // Optionally, refresh the friends list or update the local state to reflect this change
+    };
 
     return (
         <div className="container">
             <h2 className="mb-4">Friendship Page</h2>
             <div className="row" id="friend-cards">
-                {friends.map((friend, index) => (
-                    <div key={index} className="col-md-6">
+                {friends.map((friend) => (
+                    <div key={friend.id} className="col-md-6">
                         <div className="friend-card">
                             <div className="row align-items-center">
                                 <div className="col-8">
@@ -61,9 +57,9 @@ export default function FriendshipPage () {
                                     <p>Location: {friend.location}</p>
                                 </div>
                                 <div className="col-4 text-right">
-                                    <button className="btn btn-danger mr-2" onClick={() => deleteFriend(friend.username)}>Delete</button>
-                                    <button className="btn btn-success mr-2" onClick={() => acceptRequest(friend.username)}>Accept</button>
-                                    <button className="btn btn-secondary mr-2" onClick={() => rejectRequest(friend.username)}>Reject</button>
+                                    <button className="btn btn-danger mr-2" onClick={() => deleteFriend(friend.id)}>Delete</button>
+                                    <button className="btn btn-success mr-2" onClick={() => acceptRequest(friend.id)}>Accept</button>
+                                    <button className="btn btn-secondary mr-2" onClick={() => rejectRequest(friend.id)}>Reject</button>
                                 </div>
                             </div>
                         </div>

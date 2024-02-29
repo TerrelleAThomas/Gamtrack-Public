@@ -1,73 +1,68 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { auth } from "../Firebase"; // Ensure Firebase is configured properly
 
-const NavigationBar = () => {
-    const changeNavbarColor = (event) => {
-        const navbar = document.querySelector('.navbar');
-        navbar.classList.remove('navbar-green'); // Reset to default color
-        navbar.offsetHeight; // Trigger reflow to apply transition
-        navbar.classList.add('navbar-green'); // Apply green color
-        event.preventDefault(); // Prevent the default behavior of the link
+export default function Navbar() {
+    const handleLogout = async () => {
+        try {
+            await auth.signOut();
+            // Perform additional logout operations if needed
+            window.location.href = '/login';
+        } catch (error) {
+            console.error('Error during logout:', error);
+        }
     };
 
     return (
-        <>
-            <html lang="en">
-            <head>
-                <meta charSet="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-                <title>Navigation Bar Example</title>
-                <style>
-                    {`
-              .navbar {
-                transition: background-color 0.3s ease; /* Smooth transition for background color change */
-              }
-              .navbar-green {
-                background-color: #008000 !important; /* Green color */
-              }
-              .navbar-nav .nav-link {
-                font-size: 1.2rem; /* Adjust the font size as needed */
-              }
-            `}
-                </style>
-            </head>
-            <body>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="#">GameTrack</a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ul className="navbar-nav mx-auto">
-                            <li className="nav-item">
-                                <a className="nav-link" href="#" onClick={changeNavbarColor}>Home</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#" onClick={changeNavbarColor}>Pairing</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#" onClick={changeNavbarColor}>Search</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#" onClick={changeNavbarColor}>Comments</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#" onClick={changeNavbarColor}>Posts</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#" onClick={changeNavbarColor}>Contact Us</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-            </body>
-            </html>
-        </>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <Link to="/" className="navbar-brand">
+                <img src={process.env.PUBLIC_URL + "/logo.png"} alt="Logo" height="60" />
+                My App
+            </Link>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav ml-auto">
+                    <li className="nav-item">
+                        <Link to="/home" className="nav-link">Home</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/aboutus" className="nav-link">About Us</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/contact" className="nav-link">Contact</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/friendshiplist" className="nav-link">Friendship List</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/individualpost" className="nav-link">Individual Post</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/message" className="nav-link">Message</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/pairing" className="nav-link">Pairing</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/post" className="nav-link">Post</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/recommendation" className="nav-link">Recommendation</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/search" className="nav-link">Search</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/userprofile" className="nav-link">User Profile</Link>
+                    </li>
+                    {/* Other nav items... */}
+                    <li className="nav-item">
+                        <button className="btn btn-outline-danger" onClick={handleLogout}>Logout</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     );
-};
-
-export default NavigationBar;
+}

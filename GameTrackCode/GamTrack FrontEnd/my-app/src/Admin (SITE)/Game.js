@@ -1,5 +1,8 @@
 import React from 'react';
 
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+
 export default function GameManagement () {
     const deleteGame = (event) => {
         const gameCard = event.target.closest('.game-card');

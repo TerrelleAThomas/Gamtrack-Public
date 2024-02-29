@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 import axios from "axios"; // Note the lowercase 'axios' for correct import
 
 export default function SignupPage() {

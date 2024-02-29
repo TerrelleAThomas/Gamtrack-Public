@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 export default function UserManagement () {
     const [searchId, setSearchId] = useState('');

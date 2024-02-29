@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 export default function PostCommentModeration () {
     useEffect(() => {

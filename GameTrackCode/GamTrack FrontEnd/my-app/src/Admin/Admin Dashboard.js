@@ -1,5 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';;
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 
 export default function AdminDashboard () {

@@ -1,6 +1,8 @@
 import React from 'react';
-import firebase from './firebaseConfig'; // Adjust this import path to your Firebase config file
-
+// Adjust this import path to your Firebase config file
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 export default function UserDatabase () {
     // Function to update the user status in Firebase

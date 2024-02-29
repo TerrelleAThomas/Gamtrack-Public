@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import 'firebase/firestore';
 import {db} from "../pages/FirebaseConfig";
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 
 export default function AnnouncementPage () {

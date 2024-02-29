@@ -1,4 +1,6 @@
 import React from 'react';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 // External CSS import (optional)
 // import './AdminDashboard.css';

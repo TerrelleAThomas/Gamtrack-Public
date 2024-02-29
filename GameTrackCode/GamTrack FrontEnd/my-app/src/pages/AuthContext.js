@@ -1,18 +1,18 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { auth } from './firebase'; // Adjust this import according to your project structure
+import { auth, firestore } from "/firebase"; // Adjust this path to where your firebase.js file is located
+import { doc, getDoc } from 'firebase/firestore';
 
-const AuthContext = React.createContext();
+export const AuthContext = React.createContext();
 
 export function useAuth() {
     return useContext(AuthContext);
 }
 
 export function AuthProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState();
+    const [currentUser, setCurrentUser] = useState(null);
     const [userProfile, setUserProfile] = useState({});
     const [loading, setLoading] = useState(true);
 
-    // Authentication actions
     function signup(email, password) {
         return auth.createUserWithEmailAndPassword(email, password);
     }
@@ -26,21 +26,21 @@ export function AuthProvider({ children }) {
     }
 
     useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged(user => {
+        const unsubscribe = auth.onAuthStateChanged(async user => {
             setCurrentUser(user);
             if (user) {
                 // Fetch user profile from Firestore
-                const userProfileRef = firebase.firestore().collection('userProfiles').doc(user.uid);
-                userProfileRef.get().then(doc => {
-                    if (doc.exists) {
-                        setUserProfile(doc.data());
-                    }
-                    setLoading(false);
-                });
+                const userProfileRef = doc(firestore, 'userProfiles', user.uid);
+                const docSnap = await getDoc(userProfileRef);
+                if (docSnap.exists()) {
+                    setUserProfile(docSnap.data());
+                } else {
+                    console.log("No user profile found");
+                }
             } else {
-                setUserProfile({}); // Reset userProfile when there's no user
-                setLoading(false);
+                setUserProfile({});
             }
+            setLoading(false);
         });
 
         return unsubscribe;
