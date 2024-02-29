@@ -19,4 +19,8 @@ public class Comment extends BaseComment {
         this.postId = postId;
         this.userId = userId;
     }
+
+    public String getPostId() {
+        return postId;
+    }
 }

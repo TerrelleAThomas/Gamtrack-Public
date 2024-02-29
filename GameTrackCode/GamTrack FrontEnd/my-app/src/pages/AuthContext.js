@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {auth} from '../Firebase'
+import Login from "./Login";
 
 export const AuthContext = React.createContext();
 
@@ -10,12 +11,12 @@ export function AuthProvider({children}) {
     const [currentUser, setCurrentUser] = useState()
     const [loading,setLoading] = useState(true)
 
-    function signup(email, password) {
+    function SignupPage(email, password) {
         return auth.createUserWithEmailAndPassword(email, password)
 
     }
 
-    function login(email,password) {
+    function LoginForm(email,password) {
         return auth.signInWithEmailAndPassword(email,password)
     }
 
@@ -34,9 +35,10 @@ export function AuthProvider({children}) {
 
     const value = {
         currentUser,
-        login,
-        signup,
-        logout
+        Login,
+        SignupPage,
+        logout,
+        LoginForm
     }
     return (
         <AuthContext.Provider value={value}>

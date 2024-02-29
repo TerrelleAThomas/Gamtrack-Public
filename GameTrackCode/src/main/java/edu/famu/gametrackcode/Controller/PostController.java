@@ -22,7 +22,7 @@ public class PostController {
     @PostMapping
     public ResponseEntity<?> createPost(@RequestBody Post post) {
         try {
-            String updateTime = postService.createPost(post);
+            Post updateTime = postService.createPost(post);
             return ResponseEntity.ok(updateTime);
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
@@ -59,7 +59,7 @@ public class PostController {
     @PutMapping("/{postId}")
     public ResponseEntity<?> updatePost(@PathVariable String postId, @RequestBody Post post) {
         try {
-            String updateTime = postService.updatePost(postId, post);
+            Post updateTime = postService.updatePost(postId, post);
             return ResponseEntity.ok(updateTime);
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
@@ -70,7 +70,7 @@ public class PostController {
     @DeleteMapping("/{postId}")
     public ResponseEntity<?> deletePost(@PathVariable String postId) {
         try {
-            String updateTime = postService.deletePost(postId);
+            boolean updateTime = postService.deletePost(postId);
             return ResponseEntity.ok(updateTime);
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();

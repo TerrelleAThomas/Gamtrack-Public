@@ -24,6 +24,8 @@ import PostPage from "../Gamer/Post";
 import AdminPrivateRoute from "../Private Routes/AdminRoute";
 import UserRoute from "../Private Routes/UserRoute";
 import SiteAdminRoute from "../Private Routes/SiteAdminRoute";
+import Logout from "../Gamer/LogOut";
+import NotAuthorizedPage from "./NotAuthorized";
 
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
             <Route element={<Login />} path='/'/>
             <Route element={<Login />} path='/login'/>
             <Route element={<SignUp />} path='/signup'/>
+            <Route element={<NotAuthorizedPage />} path='/Not' />
 
             <Route element={<UserRoute />}>
               <Route element={<AboutUs />} path='User' />
@@ -49,11 +52,12 @@ function App() {
               <Route element={<FriendshipPage />} path='Friendship' />
               <Route element={<IndiviualPost />} path='Individual' />
               <Route element={<RecommendedGames />} path='Games' />
+              <Route element={<Logout />} path='LogOut' />
             </Route>
 
             <Switch>
-              <SiteAdminRoute path="/admin/dashboard" component={SiteAdminDashboard} />
               <Route path="/login" component={LoginPage} />
+              <SiteAdminRoute path="/admin/dashboard" component={SiteAdminDashboard} />
               <Route element={<SiteAdminDashboard />} path='/Site' />
               <Route element={<AnnouncementPage />} path='/Announcement' />
               <Route element={<GameManagement />} path='/Game' />
@@ -62,8 +66,8 @@ function App() {
             </Switch>
 
             <Switch>
-              <AdminPrivateRoute path="/admin/dashboard" component={AdminDashboard} />
               <Route path="/login" component={LoginPage} />
+              <AdminPrivateRoute path="/admin/dashboard" component={AdminDashboard} />
               <Route element={<AdminDashboard />} path='/AdminDashboard' />
               <Route element={<UserManagement />} path='/UserManagement' />
               <Route element={<AdminReports />} path='/Reports' />

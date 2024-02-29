@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import firebase from 'firebase/app';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
+import { signInWithEmailAndPassword } from "firebase/auth";
 import 'firebase/auth';
+import { auth } from "./FirebaseConfig"; // Assuming this is correctly set up
 
 const LoginForm = () => {
     const [formData, setFormData] = useState({
@@ -9,49 +10,69 @@ const LoginForm = () => {
         password: '',
     });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const { email, password } = formData;
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const { email, password } = formData; // Correctly define email and password here
 
         try {
             // Sign in with Firebase Authentication
-            await firebase.auth().signInWithEmailAndPassword(email, password);
-
-            // Handle success, e.g., redirect the user or show a success message
-            console.log('User logged in successfully');
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            console.log('User logged in successfully:', userCredential.user);
+            // Optionally, redirect the user or update the UI to reflect the successful login
         } catch (error) {
             // Handle error, e.g., display an error message
-            console.error('Error logging in', error.message);
+            console.error('Error logging in:', error.message);
+            // Optionally, update UI to show an error message
         }
     };
 
     const handleChange = (e) => {
-        const { id, value } = e.target;
-        setFormData((prevFormData) => ({
+        const { name, value } = e.target;
+        setFormData(prevFormData => ({
             ...prevFormData,
-            [id]: value,
+            [name]: value,
         }));
     };
 
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <h1 className="text-center mb-4">GamTracker</h1>
-                    <p className="quote">“Boss… you were right. It’s not about changing the world. It’s about doing our best to leave the world… the way it is. It’s about respecting the will of others and believing in your own.”</p>
-                    <form onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" className="form-control" id="email" placeholder="Enter your email" onChange={handleChange} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input type="password" className="form-control" id="password" placeholder="Enter your password" onChange={handleChange} />
-                        </div>
-                        <button type="submit" className="btn btn-primary btn-block">Login</button>
-                    </form>
-                    <div className="space-after-login-form"></div>
+        <div className="bg" style={{
+            backgroundImage: `url("/Pictures/Now.png")`,
+            height: '100vh',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+        }}>
+            <div className="container d-flex justify-content-center align-items-center" style={{height: '100vh'}}>
+                <div className="row justify-content-center">
+                    <div className="col-md-6" style={{backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '10px'}}>
+                        <h1 className="text-center mb-4">GamTracker</h1>
+                        <p className="quote">“Boss… you were right. It’s not about changing the world. It’s about doing our best to leave the world… the way it is. It’s about respecting the will of others and believing in your own.”</p>
+                        <form onSubmit={handleSubmit}>
+                            <div className="form-group mb-3">
+                                <label htmlFor="email">Email</label>
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    name="email"
+                                    placeholder="Enter your email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div className="form-group mb-3">
+                                <label htmlFor="password">Password</label>
+                                <input
+                                    type="password"
+                                    className="form-control"
+                                    name="password"
+                                    placeholder="Enter your password"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <button type="submit" className="btn btn-primary btn-block">Login</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

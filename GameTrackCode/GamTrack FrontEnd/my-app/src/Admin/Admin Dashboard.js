@@ -1,45 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function AdminDashboard() {
-    const [activeTab, setActiveTab] = useState('userManagement');
-
-    function showTab(tabId) {
-        console.log(`Link clicked for tab: ${tabId}`);
-        setActiveTab(tabId);
-    }
+    // Inline style for the background image
+    const backgroundStyle = {
+        backgroundImage: `url('/Pictures/Admin.jpg')`,
+        backgroundSize: 'cover', // Cover the entire page
+        backgroundPosition: 'center', // Center the background image
+        minHeight: '100vh', // Make sure it covers the whole viewport height
+        color: '#fff', // Assuming you want white text color for contrast
+    };
 
     return (
-        <div>
-            <header className="bg-dark text-white text-center py-3">
+        <div style={backgroundStyle}>
+            <header className="bg-dark text-white text-center py-3" style={{backgroundColor: 'rgba(0,0,0,0.5)'}}> {/* Semi-transparent header */}
                 <h1>Admin Dashboard</h1>
             </header>
 
             <div className="container mt-4">
                 <div className="row justify-content-center">
                     <nav className="navbar navbar-expand-lg navbar-dark mx-auto text-center">
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarNav">
-                            <ul className="navbar-nav">
-                                <li className="nav-item">
-                                    <a className={`nav-link ${activeTab === 'userManagement' ? 'active' : ''}`} href="#userManagement" onClick={() => showTab('userManagement')}>User Management</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className={`nav-link ${activeTab === 'contentModeration' ? 'active' : ''}`} href="#contentModeration" onClick={() => showTab('contentModeration')}>Search</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className={`nav-link ${activeTab === 'analytics' ? 'active' : ''}`} href="#analytics" onClick={() => showTab('analytics')}>Report</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/UserManagement" activeClassName="active">User Management</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/Database" activeClassName="active">Search</NavLink> {/* Fixed path */}
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="/Reports" activeClassName="active">Report</NavLink>
+                            </li>
+                        </ul>
                     </nav>
-                </div>
-
-                <div className="row mt-3">
-                    <div className="col-md-12">
-                        {/* Content sections can be added here if needed */}
-                    </div>
                 </div>
             </div>
         </div>

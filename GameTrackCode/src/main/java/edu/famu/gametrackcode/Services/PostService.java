@@ -6,6 +6,7 @@ import edu.famu.gametrackcode.Model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -19,33 +20,46 @@ public class PostService {
         this.db = db;
     }
 
-    public String createPost(Post post) throws ExecutionException, InterruptedException {
-        CollectionReference posts = db.collection("posts");
-        WriteResult writeResult = posts.document().create(post).get();
-        return writeResult.getUpdateTime().toString();
+    public Post createPost(Post post) throws ExecutionException, InterruptedException {
+        DocumentReference docRef = db.collection("posts").document();
+        // Set creation and update timestamps
+        post.getCreationDate(Instant.now());
+        post.getUpdateDate(Instant.now());
+        // Generate and set post-ID
+        post.getPostId(docRef.getId());
+        docRef.set(post).get();
+        return post;
     }
 
     public Post getPost(String postId) throws ExecutionException, InterruptedException {
-        return db.collection("posts").document(postId).get().get().toObject(Post.class);
+        DocumentSnapshot documentSnapshot = db.collection("posts").document(postId).get().get();
+        if (documentSnapshot.exists()) {
+            return documentSnapshot.toObject(Post.class);
+        } else {
+            // Consider how you want to handle a non-existent post.
+            // For example, throw a custom NotFoundException.
+            throw new IllegalStateException("Post not found with ID: " + postId);
+        }
     }
 
     public List<Post> getAllPosts() throws ExecutionException, InterruptedException {
         ApiFuture<QuerySnapshot> querySnapshot = db.collection("posts").get();
         List<QueryDocumentSnapshot> documents = querySnapshot.get().getDocuments();
         List<Post> posts = new ArrayList<>();
-        for (DocumentSnapshot document : documents) {
-            posts.add(document.toObject(Post.class));
-        }
+        documents.forEach(doc -> posts.add(doc.toObject(Post.class)));
         return posts;
     }
 
-    public String updatePost(String postId, Post post) throws ExecutionException, InterruptedException {
-        WriteResult writeResult = db.collection("posts").document(postId).set(post).get();
-        return writeResult.getUpdateTime().toString();
+    public Post updatePost(String postId, Post post) throws ExecutionException, InterruptedException {
+        DocumentReference docRef = db.collection("posts").document(postId);
+        // Update the updateTime to now
+        post.getUpdateDate(Instant.now());
+        docRef.set(post).get();
+        return post;
     }
 
-    public String deletePost(String postId) throws ExecutionException, InterruptedException {
-        WriteResult writeResult = db.collection("posts").document(postId).delete().get();
-        return writeResult.getUpdateTime().toString();
+    public boolean deletePost(String postId) throws ExecutionException, InterruptedException {
+        db.collection("posts").document(postId).delete().get();
+        return true; // Or check for successful deletion if necessary
     }
 }

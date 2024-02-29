@@ -1,23 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const UserManagement = () => {
+    const [searchId, setSearchId] = useState('');
+    const [userData, setUserData] = useState({
+        userName: 'User Name',
+        userDetails: 'User details go here...',
+        registrationDate: 'Registration Date: January 1, 2022',
+    });
 
-    const fetchUserData = () => {
-        // Replace this with your Firebase logic to fetch user data
-        const userName = "John Doe";
-        const userDetails = "User details fetched from Firebase will appear here...";
-        const registrationDate = "January 1, 2022";
-
-        // Update the user card with fetched data
-        document.getElementById("user-name").textContent = userName;
-        document.getElementById("user-details").textContent = userDetails;
-        document.getElementById("registration-date").textContent = "Registration Date: " + registrationDate;
-    };
-
-    const deleteUser = () => {
-        // Logic to delete the user
-        // Implement this based on your Firebase setup
-        alert("Deleting user...");
+    // Function to fetch user data from the backend
+    const fetchUserData = async () => {
+        try {
+            const response = await fetch(`/api/usersearch/${searchId}`);
+            if (response.ok) {
+                const data = await response.json();
+                setUserData({
+                    userName: data.userName || 'User Name Not Found',
+                    userDetails: "User details fetched from backend",
+                    registrationDate: "Registration Date: " + (data.registrationDate || "Registration Date Not Available"),
+                });
+            } else {
+                console.error('Failed to fetch user data');
+                alert('User not found');
+                // Reset displayed user data to indicate not found
+                setUserData({
+                    userName: 'User Not Found',
+                    userDetails: 'User details not available',
+                    registrationDate: 'Registration Date Not Available',
+                });
+            }
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+            alert('Error fetching user data');
+        }
     };
 
     return (
@@ -25,29 +40,26 @@ const UserManagement = () => {
             <div className="row justify-content-center">
                 <div className="col-md-8">
                     <div className="user-list">
-                        <h2 className="text-center mb-4">User Management</h2>
-
-                        {/* Search Bar */}
+                        <h2 className="text-center mb-4">User Search</h2>
                         <div className="input-group mb-3 search-bar">
-                            <input type="text" className="form-control" placeholder="Search for users..." aria-label="Search" aria-describedby="search-btn" />
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Enter search ID..."
+                                value={searchId}
+                                onChange={(e) => setSearchId(e.target.value)}
+                            />
                             <div className="input-group-append">
-                                <button className="btn btn-outline-secondary" type="button" id="search-btn" onClick={fetchUserData}>Search</button>
+                                <button className="btn btn-outline-secondary" onClick={fetchUserData}>Search</button>
                             </div>
                         </div>
-
-                        {/* User Card */}
-                        <div className="user-card" id="user-card">
-                            <h5 id="user-name">User Name</h5>
-                            <p id="user-details">User details go here...</p>
-                            <small id="registration-date">Registration Date: January 1, 2022</small>
-                            <div className="text-right">
-                                <button className="btn btn-danger" onClick={deleteUser}>Delete</button>
-                            </div>
+                        <div className="user-card">
+                            <h5>{userData.userName}</h5>
+                            <p>{userData.userDetails}</p>
+                            <small>{userData.registrationDate}</small>
                         </div>
-                        {/* End of User Card */}
                     </div>
-
-                    <a href="admin-dashboard.html" className="btn btn-secondary btn-block">Back to Admin Dashboard</a>
+                    <a href="/admin-dashboard" className="btn btn-secondary btn-block">Back to Admin Dashboard</a>
                 </div>
             </div>
         </div>

@@ -1,32 +1,42 @@
 package edu.famu.gametrackcode.Services;
 
+import com.google.cloud.firestore.DocumentSnapshot;
+import com.google.cloud.firestore.Firestore;
+import com.google.firebase.cloud.FirestoreClient;
 import edu.famu.gametrackcode.Model.Comment;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CommentService {
 
-    // Assuming you have a Firestore database instance here
-    // private final Firestore db;
+    private Firestore db;
 
-    public Comment createComment(Comment comment) {
-        // Implement logic to save comment to the database
-        return comment;
+    public CommentService() {
+        this.db = FirestoreClient.getFirestore();
     }
 
-    public Comment getCommentById(String commentId) {
-        // Implement logic to retrieve a comment by its ID from the database
-        return new Comment();
+    public Comment createComment(Comment comment) throws Exception {
+        String docId = comment.getCommentId()!= null ? comment.getCommentId() : db.collection("comments").document().getId();
+        comment.setCommentId(docId); // Ensure the comment object has the correct ID
+        db.collection("comments").document(docId).set(comment).get();
+        return comment; // Return the saved comment
     }
 
-    public Comment updateComment(String commentId, Comment comment) {
-        // Implement logic to update a comment in the database
-        return comment;
+    public Comment getCommentById(String commentId) throws Exception {
+        DocumentSnapshot documentSnapshot = db.collection("comments").document(commentId).get().get();
+        if (documentSnapshot.exists()) {
+            return documentSnapshot.toObject(Comment.class);
+        } else {
+            throw new Exception("Comment not found");
+        }
     }
 
-    public void deleteComment(String commentId) {
-        // Implement logic to delete a comment from the database
+    public Comment updateComment(String commentId, Comment comment) throws Exception {
+        db.collection("comments").document(commentId).set(comment).get();
+        return comment; // Return the updated comment
     }
 
-    // Other service methods as needed
+    public void deleteComment(String commentId) throws Exception {
+        db.collection("comments").document(commentId).delete().get();
+    }
 }
